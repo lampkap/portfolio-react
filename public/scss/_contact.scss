@@ -1,0 +1,169 @@
+.contact {
+    padding:10rem 0 5rem 0;
+    min-height: calc(100vh - 15rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact--head {
+    text-align: center;
+}
+
+.contact--content {
+    max-width: 65rem;
+    margin: 0 auto;
+
+    .button {
+        font-size: 1.6rem;
+        border-radius: 0;
+        height: 4rem;
+        line-height: 4rem;
+        outline: none;
+        cursor: pointer;
+    }
+
+    p {
+        line-height: 2.2rem;
+        margin-bottom: 5rem;
+    } 
+}
+
+form {
+    transition: all .25s ease-out;
+
+    &.hidden {
+        opacity: 0;
+    }
+
+    &.removed {
+        display: none;
+    }
+}
+
+.input--line, textarea {
+    border: none;
+    outline: none;
+    border-bottom: .1rem solid $baseColor;
+    background: transparent; 
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    transition: all .25s ease-out;
+
+    &.error {
+        border-bottom: .1rem solid $error;
+    }
+  
+    &:focus {
+        border-bottom-color: #222;
+        //border: .2rem solid #222;
+        border-image: linear-gradient(to right, $gradient4 0%, $gradient3 100%);
+        border-image-slice: 1;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        + label {
+            top: -1.5rem;
+            font-size: 1.4rem;
+            color: #222;
+        }
+    }
+}
+
+textarea {
+    resize: none;
+}
+  
+.input--wrapper{
+    position: relative;
+    margin-bottom: 4rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+  
+.input--label{
+    text-align: left;
+    position: absolute;
+    color: $baseColor;
+    left: 0;
+    top: 1rem;
+    font-size: 1.6rem;
+    cursor: text;
+    transition: all .25s ease-out;
+
+    &.sticky {
+        top: -1.5rem !important;
+        font-size: 1.4rem;
+        color: #222;
+    }
+}
+
+.contact--links {
+    padding: 5rem 0;
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .info--link {
+        font-size: 2rem;
+        text-align: center;
+        width: auto;
+        font-weight: bold;
+    }
+
+    li {
+        &:first-child {
+            a {
+                width: 7.4rem;
+            }
+        }
+
+        &:nth-child(2) {
+            a {
+                width: 7.7rem;
+            }
+        }
+
+        &:last-child {
+            a {
+                width: 5.1rem;
+            }
+        }
+    }
+}
+
+input#date {
+    display: none;
+}
+
+.error--message {
+    color: $error;
+    position: absolute;
+    right: 0;
+    bottom: -4rem;
+    @media screen and (max-width: 420px) {
+        font-size: 1.4rem;
+    }
+}
+
+.success--message {
+    opacity: 0;
+    line-height: 2.4rem;
+    transition: all .25s ease-out;
+
+    &.shown {
+        opacity: 1;
+    }
+
+    &.removed {
+        display: none;
+    }
+}
+
+.contact--content .contact--intro {
+    line-height: 2.6rem; 
+}

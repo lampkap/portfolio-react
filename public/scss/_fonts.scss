@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+@font-face {
+    font-family: 'ubuntu';
+    src: url('../fonts/ubuntu.eot');
+    src: url('../fonts/ubuntu.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu.woff2') format('woff2'),
+         url('../fonts/ubuntu.woff') format('woff'),
+         url('../fonts/ubuntu.ttf') format('truetype'),
+         url('../fonts/ubuntu.svg#ubuntubold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'gilroy';
+    src: url('../fonts/gilroy.eot');
+    src: url('../fonts/gilroy.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gilroy.woff2') format('woff2'),
+         url('../fonts/gilroy.woff') format('woff'),
+         url('../fonts/gilroy.svg#webfontregular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}

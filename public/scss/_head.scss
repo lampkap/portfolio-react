@@ -1,0 +1,220 @@
+.head{
+    padding: 5rem 0;
+    height: calc(100vh - 10rem);
+    position: relative;
+    background: $brokenWhite;
+    background: linear-gradient(to bottom, $white 0%,$brokenWhite 100%);
+
+    &:before{
+        content: '';
+        width: 73rem;
+        height: 46.5rem;
+        display: block;
+        background: $gradient1;
+        background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
+        transform: rotate(-45deg);
+        border-radius: 3rem; 
+        position: absolute;
+        top: 0;
+        right: 80%;
+        z-index: 0; 
+
+        @media screen and (max-width: 480px) {
+            top: -5rem;
+        }
+    }
+
+    &:after{
+        content: '';
+        display: block;
+        width: 20rem; 
+        height: 20rem; 
+        border-radius: 50%;
+        position: absolute;
+        bottom: 5rem;
+        right: 4rem;
+        background: $gradient3;
+        background: linear-gradient(45deg, $gradient4 0%,$gradient3 100%);
+        z-index: 0;
+
+        @media screen and (max-width: 640px) {
+            display: none;
+        }
+    }
+}
+
+.navigation {
+    float: right;
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    @media screen and (max-width: 640px) {
+        display: none;
+    }
+}
+
+.navigation--links{
+    max-width: 144rem;
+    padding: 0 4rem;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.navigation--link{
+    display: inline-block;
+    margin-right: 3rem;
+    &:last-child{
+        margin-right: 0;
+    }
+
+    a{
+        color: $linkColor;
+        border-bottom: none;
+        position: relative;
+        display: block;
+        height: 2rem;
+        overflow-x: hidden;
+
+        &:after{
+            content: '';
+            width: 100%;
+            right: 100%;
+            height: .2rem;
+            display: block;
+            position: absolute;
+            margin-top: 0.2rem;
+            background: $gradient1;
+            background: -moz-linear-gradient(left, $gradient2 0%, $gradient1 100%);
+            background: -webkit-linear-gradient(left, $gradient2 0%,$gradient1 100%);
+            background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$gradient2', endColorstr='$gradient1',GradientType=0 ); 
+            transition: all .25s ease-out;
+        }
+
+        &.no-transition {
+            &:after {
+                transition: none;
+            }
+        }
+
+        &.active, &:hover {
+            background: -webkit-linear-gradient(left, $gradient2, $gradient1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            &:after {
+                right: 0 !important;
+            }
+        }
+
+        // &.center{
+        //     &:after {
+        //         right: 0;
+        //     }
+        // }
+
+        // &.left {
+        //     &:after {
+        //         right: 100%;
+        //     }
+        // }
+
+        // &.right {
+        //     &:after {
+        //         right: -100%;
+        //     }
+        // }
+    }
+}
+
+.head--content{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 76rem;
+    padding: 0 2rem;
+    text-align: center;
+    transition: all .25s ease-out;
+    z-index: 1;
+    @media screen and (max-width: 640px) {
+        top: 25%;
+    }
+}
+
+.head--title{
+    display: inline-block;
+    width: 13.4rem;
+    position: relative;
+    color: transparent;
+    background: linear-gradient(to left, transparent 50%, $linkColor 50%);
+    background-size: 200% 100%;
+    background-position: 100% bottom; 
+    animation: blackToText .5s .3s forwards ease-out running;
+}
+
+.divider{
+    width: 5rem;
+    height: .2rem;
+    background-color: #DADADA;
+    margin: 5rem auto;
+    display: block;
+
+    &.vertical {
+        width: 0.2rem;
+        height: 5rem;
+        margin: 0 3rem;
+    }
+}
+
+.head--text{
+    font-size: 2rem;
+    line-height: 2.6rem;
+    margin-bottom: 2rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}  
+
+.info--link{
+    background: linear-gradient(to left, transparent 50%, $linkColor 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    display: inline-block;
+    width: 10rem;
+    transition: all .15s ease-out;
+    &:hover{
+        //background-position: left bottom;
+        color: #fff;
+        border: none;
+    }
+    &.no-transition {
+        transition: none;
+    }
+    &.left{
+        background-position: right bottom;
+    }
+    &.right{
+        background-position: -100% bottom;
+    }
+    &.center{
+        background-position: left bottom;
+    } 
+}
+
+.scroll-indicator{
+    display: block;
+    width: .2rem;
+    height: 5rem;
+    margin-top: 0;
+    background: $baseColor;
+    position: absolute;
+    top: calc(100% - 5rem);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    animation: scrolldown 2s 3s infinite;
+    transition: all .25s ease-out;
+}
