@@ -2,8 +2,7 @@ const path = require('path'),
       bodyParser = require('body-parser'),
       express = require('express'),
       app = express(),
-      nodemailer = require('nodemailer'),
-      auth = require('./auth.js');
+      nodemailer = require('nodemailer');
 
 const handleSubmit = (req, res) => {
 
@@ -66,8 +65,8 @@ const sendMail = (data) => {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-          user: auth.username, // generated ethereal user
-          pass: auth.password // generated ethereal password
+          user: 'diemleyssen@gmail.com', // generated ethereal user
+          pass: 'vjfdhpirehqxcxvw' // generated ethereal password
       }
   });
 
