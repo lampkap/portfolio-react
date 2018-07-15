@@ -100,7 +100,7 @@ const sendMail = (data) => {
 
 const port = (process.env.PORT || 8080);
 
-app.use(express.static(path.join(__dirname, 'client', 'public')));
+//app.use(express.static(path.join(__dirname, 'client', 'public')));
 
 app.use(bodyParser.urlencoded({
     extended: true  
@@ -112,6 +112,7 @@ app.post('/contact', handleSubmit);
 process.env.NODE_ENV = 'production';
 
 if (process.env.NODE_ENV !== 'production') {
+
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -120,9 +121,12 @@ if (process.env.NODE_ENV !== 'production') {
 
   app.use(webpackHotMiddleware(compiler));
   app.use(webpackDevMiddleware(compiler));
+  app.use(express.static(path.join(__dirname, 'client', 'public')));
+
 }else{
+  app.use(express.static('client/build'));
   const indexPath = path.join(__dirname, 'client', 'build', 'index.html');
-  app.get('/', function (_, res) { 
+  app.get('*', function (_, res) { 
     res.sendFile(indexPath);
   });
 }
