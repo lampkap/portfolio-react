@@ -53,6 +53,6 @@
     "test:watch": "npm run test --watch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "heroku-postbuild": "cd src && yarn && yarn run build"
+    "heroku-postbuild": "yarn run build"
   }
 }
