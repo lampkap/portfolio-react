@@ -120,7 +120,7 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackDevMiddleware(compiler));
 }else{
   const indexPath = path.join(__dirname, 'dist', 'index.html');
-  app.get('*', function (_, res) { 
+  app.get('/', function (_, res) { 
     res.sendFile(indexPath);
   });
 }
