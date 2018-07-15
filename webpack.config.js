@@ -12,7 +12,7 @@ var production = process.env.NODE_ENV === 'production';
 
 webpackConfig = {
   entry: {
-    bundle: './src/index.js',
+    bundle: './client/src/index.js',
     vendor: VENDOR_LIBS
   },
   output: {
@@ -44,15 +44,15 @@ webpackConfig = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {from:'public/img',to:'img'}, 
-      {from:'public/favicons',to:'favicons'} 
-    ]), 
+    // new CopyWebpackPlugin([
+    //   {from:'public/img',to:'img'}, 
+    //   {from:'public/favicons',to:'favicons'} 
+    // ]), 
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor','manifest']
     }),
     new HTMLWebpackPlugin({
-      template: 'src/index.html'
+      template: 'client/build/index.html'
     }),
     new ExtractTextPlugin('style.css'),
     new webpack.DefinePlugin({
