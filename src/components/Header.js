@@ -46,7 +46,7 @@ class Header extends Component {
                             I’m currently working at Novation in Genk, Belgium.
                         </p>
                         <p className="head--text">
-                            To find out more about me, check out <a className="info--link" id="resume" target="_blank" href="resume/resume.pdf" onMouseEnter={(e) => this.enterBackground(e)} onMouseLeave={(e) => this.leaveBackground(e)}>my resume</a>.
+                            To find out more about me, check out <a className="info--link" id="resume" target="_blank" href="http://www.diemleyssen.be/resume/resume.pdf" onMouseEnter={(e) => this.enterBackground(e)} onMouseLeave={(e) => this.leaveBackground(e)}>my resume</a>.
                         </p>
                     </div>
                 </div>

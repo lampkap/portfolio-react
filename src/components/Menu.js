@@ -17,19 +17,19 @@ class Menu extends Component {
 
         const headContent = document.getElementsByClassName("head--content"),
               projects = document.getElementsByClassName("project"),
-              contact = document.getElementsByClassName("contact--content"),
+              //contact = document.getElementsByClassName("contact--content"),
               homeLink = document.querySelector("#head_link"),
               projectsLink = document.querySelector("#projects_link"),
-              contactLink = document.querySelector("#contact_link"),
+              //contactLink = document.querySelector("#contact_link"),
               homeLinkMobile = document.querySelector(".mobile--navigation .head_link"),
-              projectsLinkMobile = document.querySelector(".mobile--navigation .projects_link"),
-              contactLinkMobile = document.querySelector(".mobile--navigation .contact_link");
+              projectsLinkMobile = document.querySelector(".mobile--navigation .projects_link");
+              //contactLinkMobile = document.querySelector(".mobile--navigation .contact_link");
 
         for(let i = 0; i < projects.length; i++) {
             this.addActiveNavElement(projects[i], projectsLink, projectsLinkMobile);
         }
-        this.addActiveNavElement(headContent[0], homeLink, homeLinkMobile),
-        this.addActiveNavElement(contact[0], contactLink, contactLinkMobile);
+        this.addActiveNavElement(headContent[0], homeLink, homeLinkMobile);
+        //this.addActiveNavElement(contact[0], contactLink, contactLinkMobile);
     }
 
     isInViewport(element) {
@@ -110,9 +110,9 @@ class Menu extends Component {
                         <li className="navigation--link">
                             <a id="projects_link" href="#projects">projects</a>
                         </li>
-                        <li className="navigation--link">
+                        {/* <li className="navigation--link">
                             <a id="contact_link" href="#contact">contact</a>
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
 
@@ -121,7 +121,7 @@ class Menu extends Component {
                         <ul>
                             <li><a href="#head" onClick={this.closeMenu} className="head_link active">home</a></li>
                             <li><a href="#projects" onClick={this.closeMenu} className="projects_link">projects</a></li>
-                            <li><a href="#contact" onClick={this.closeMenu} className="contact_link">contact</a></li>
+                            {/* <li><a href="#contact" onClick={this.closeMenu} className="contact_link">contact</a></li> */}
                         </ul>
                     </div>
                     <div className="overlay"></div>

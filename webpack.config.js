@@ -1,7 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var src_dir = __dirname + '/src';
 
@@ -34,11 +35,18 @@ webpackConfig = {
       {
         //IMAGE LOADER
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader:'file'
+        loader:'file-loader'
       },
+      { 
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+        loader: 'url-loader?limit=100000' 
+      }
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      {from:'public/img',to:'img'} 
+    ]), 
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor','manifest']
     }),
