@@ -45,7 +45,8 @@ webpackConfig = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      {from:'public/img',to:'img'} 
+      {from:'public/img',to:'img'}, 
+      {from:'public/favicons',to:'favicons'} 
     ]), 
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor','manifest']
