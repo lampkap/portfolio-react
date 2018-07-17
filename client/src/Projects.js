@@ -5,6 +5,11 @@ class Projects extends Component {
     
     constructor(props) {
         super(props);
+        this.state = {
+            width: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+            height: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+        };
+
         this.handleScroll = this.handleScroll.bind(this);
     }
 
@@ -16,19 +21,24 @@ class Projects extends Component {
         const projects = document.querySelectorAll('.project');
 
         projects.forEach((project) => {
-            if(this.isInViewport(project)) {
+            if(this.isInViewport(project, 'project')) {
                 project.classList.add('animated');
             } 
         })
     }
 
-    isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        const html = document.documentElement;
-        return (
-            rect.top >= 0 &&
-            rect.bottom <= (window.innerHeight || html.clientHeight)
-        );      
+    isInViewport(element, type = "menuitem") {
+        const rect = element.getBoundingClientRect();  
+
+        if(this.state.width < 769) {
+            if(type === 'project') {
+                return rect.top <= 300 && rect.top >= -350; 
+            } else {
+                return rect.top <= rect.top >= 0;
+            }
+        } else {
+            return rect.top >= 0 && rect.bottom <= window.innerHeight;
+        }
     }
     
     render() {
