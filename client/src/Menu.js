@@ -22,7 +22,7 @@ class Menu extends Component {
               projectsLink = document.querySelector("#projects_link"),
               contactLink = document.querySelector("#contact_link"),
               homeLinkMobile = document.querySelector(".mobile--navigation .head_link"),
-              projectsLinkMobile = document.querySelector(".mobile--navigation .projects_link");
+              projectsLinkMobile = document.querySelector(".mobile--navigation .projects_link"),
               contactLinkMobile = document.querySelector(".mobile--navigation .contact_link");
 
         for(let i = 0; i < projects.length; i++) {
