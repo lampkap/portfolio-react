@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Projects from './Projects';
 import Contact from './Contact';
-import './css/style.css';
+import './assets/css/style.css';
 
 class App extends Component {   
     
