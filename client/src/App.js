@@ -5,10 +5,11 @@ import Header from './Header';
 import Projects from './Projects';
 import Contact from './Contact';
 import './assets/css/style.css';
+import config from './config/config';
 
 // Apollo client setup
 const client = new ApolloClient({
-    uri: 'http://localhost:8000/graphql'
+    uri: config.ADMIN_URL + '/graphql'
 })
 
 class App extends Component {   
