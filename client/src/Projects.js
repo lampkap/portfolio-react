@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import { getProjectsQuery } from './queries/queries';
 import Project from './Project';
-import imgBaj from './assets/img/baj.jpg';
-import imgImpact from './assets/img/impact.jpg';
-import imgCartesio from './assets/img/cartesio.jpg';
-import imgAssurbike from './assets/img/assurbike.jpg';
-import imgServicerent from './assets/img/servicerent.jpg';
-import imgTrias from './assets/img/trias.jpg';
+import config from './config/config';
+// import imgBaj from './assets/img/baj.jpg';
+// import imgImpact from './assets/img/impact.jpg';
+// import imgCartesio from './assets/img/cartesio.jpg';
+// import imgAssurbike from './assets/img/assurbike.jpg';
+// import imgServicerent from './assets/img/servicerent.jpg';
+// import imgTrias from './assets/img/trias.jpg';
 
 class Projects extends Component {
     
@@ -48,6 +51,9 @@ class Projects extends Component {
     }
     
     render() {
+
+        const projects = this.props.data.projects;
+
         return (
                 
             <section className="projects" id="projects">
@@ -57,7 +63,30 @@ class Projects extends Component {
                         <div className="divider"></div>
                     </div>
 
-                    <Project 
+                    {projects ? (
+                        <div>
+                            {projects.map((project, i) => {
+
+                                let direction = (i % 2 === 0) ? 'rtl' : 'ltr';
+
+                                return (
+                                    <Project 
+                                        key={project.id}
+                                        direction={direction}
+                                        image={config.ADMIN_URL + project.image}
+                                        name={project.name.toUpperCase()}
+                                        description={project.description}
+                                        link={project.link}
+                                    />
+                                )
+                            }
+                        )}
+                        </div>
+                    ) : (
+                        <div>Loading projects...</div>
+                    )}
+
+                    {/* <Project 
                         direction="rtl"
                         image={imgBaj}
                         name="BAJ BETON"
@@ -98,11 +127,12 @@ class Projects extends Component {
                         name="TRIAS"
                         description="A Drupal 7 multisite for the NGO Trias."
                         link="https://www.trias.ngo/"
-                    />
+                    /> */}
+
                 </div>
             </section>
         );
     }
 }
 
-export default Projects;
+export default graphql(getProjectsQuery)(Projects);

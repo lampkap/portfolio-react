@@ -52,7 +52,7 @@ webpackConfig = {
       names: ['vendor','manifest']
     }),
     new HTMLWebpackPlugin({
-      template: 'client/build/index.html'
+      template: 'client/public/index.html'
     }),
     new ExtractTextPlugin('style.css'),
     new webpack.DefinePlugin({

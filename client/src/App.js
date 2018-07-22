@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import Header from './Header';
 import Projects from './Projects';
 import Contact from './Contact';
 import './assets/css/style.css';
+
+// Apollo client setup
+const client = new ApolloClient({
+    uri: 'http://localhost:8000/graphql'
+})
 
 class App extends Component {   
     
@@ -39,8 +46,11 @@ class App extends Component {
         return (
             <div>
                 <Header />
-                <Projects />
+                <ApolloProvider client={client}>
+                    <Projects />
+                </ApolloProvider>
                 <Contact />
+                
             </div>
         );
     }
