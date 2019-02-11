@@ -31,7 +31,7 @@ class Projects extends Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
-        this.looper();
+        //this.looper();
     }
 
     handleScroll() {
