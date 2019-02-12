@@ -74,7 +74,7 @@ class Header extends Component {
                                 className="info--link"
                                 id="resume"
                                 target="_blank"
-                                href="http://www.diemleyssen.be/resume/resume.pdf"
+                                href="/resume.pdf"
                                 onMouseEnter={(e) => this.enterBackground(e)}
                                 onMouseLeave={(e) => this.leaveBackground(e)}>my resume</a>.
                         </p>
