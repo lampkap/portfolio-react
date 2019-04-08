@@ -14,11 +14,11 @@
 }
 
 .project {
-  margin: 5rem 0 20rem 0;
   display: flex;
+  margin: 5rem 0 20rem;
   @media screen and (max-width: 768px) {
-    margin-bottom: 10rem;
     display: block;
+    margin-bottom: 10rem;
   }
   position: relative;
 
@@ -31,20 +31,24 @@
 
   &.animated {
     .project--image {
-      animation: setBoxshadow 0.1s 0.3s ease-out forwards running;
+      animation: setBoxshadow .1s .3s ease-out forwards running;
+
       img {
-        animation: setOpacity 0.1s 0.3s ease-out forwards running;
+        animation: setOpacity .1s .3s ease-out forwards running;
       }
-      &:before {
-        animation: test 0.5s ease-out running;
+
+      &::before {
+        animation: test .5s ease-out running;
       }
     }
+
     .project--content {
-      animation: slideIn 0.5s ease-out forwards running;
+      animation: slideIn .5s ease-out forwards running;
     }
+
     .project--img__wrapper {
       &:after {
-        animation: setHeight 0.1s 0.4s ease-in-out forwards running;
+        animation: setHeight .1s .4s ease-in-out forwards running;
       }
     }
   }
@@ -55,6 +59,7 @@
         running;
     }
   }
+
   &.project--rtl.animated {
     .project--image {
       animation: positionRight 0.3s 0.3s cubic-bezier(0.5, 0, 0.4, 1) forwards
@@ -65,21 +70,21 @@
 
 .project--img__wrapper {
   flex: 0 1 auto;
-  width: 55%;
+  position: relative;
   @media screen and (max-width: 768px) {
     width: 100%;
   }
-  position: relative;
+  width: 55%;
   &:after {
+    background: $gradient3;
+    background: linear-gradient(45deg, $gradient4 0%, $gradient3 100%);
     content: "";
+    display: block;
+    height: 0;
     position: absolute;
     top: 2rem;
     width: 100%;
-    height: 0;
-    display: block;
     z-index: -1;
-    background: $gradient3;
-    background: linear-gradient(45deg, $gradient4 0%, $gradient3 100%);
   }
 }
 
@@ -89,9 +94,10 @@
       left: -2rem;
     }
   }
+
   .project--image {
-    top: 2rem;
     left: -2rem;
+    top: 2rem;
   }
 }
 
@@ -101,9 +107,10 @@
       right: -2rem;
     }
   }
+
   .project--image {
-    top: 2rem;
     right: -2rem;
+    top: 2rem;
   }
 }
 
@@ -112,12 +119,12 @@
   position: relative;
 
   img {
-    max-width: 100%;
-    opacity: 0;
     display: block;
     height: 100%;
+    max-width: 100%;
     object-fit: cover;
     object-position: center;
+    opacity: 0;
 
     &.position--left {
       object-position: left;
@@ -129,51 +136,51 @@
   }
 
   &:before {
-    opacity: 0;
+    background: #222;
     content: "";
     display: block;
-    position: absolute;
-    z-index: 1;
-    top: -100%;
-    left: 0;
-    width: 100%;
     height: 100%;
-    background: #222;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+    width: 100%;
+    z-index: 1;
   }
 }
 
 .project--content {
+  align-self: center;
   flex: 0 1 auto;
-  width: 45%;
   @media screen and (max-width: 768px) {
     width: 100%;
   }
-  align-self: center;
-  z-index: 2;
-  opacity: 0;
   margin-top: 10rem;
+  opacity: 0;
+  width: 45%;
+  z-index: 2;
 
   h2 {
+    color: $headColor;
     font-family: $head;
     font-size: 7.6rem;
     margin-left: -8rem;
-    color: $headColor;
     @media screen and (max-width: 768px) {
+      background: $brokenWhite;
+      display: inline-block;
+      font-size: 9vw;
       margin: -4rem 0 0 -2rem;
       padding: 2rem;
-      display: inline-block;
-      background: $brokenWhite;
-      font-size: 9vw;
     }
   }
 
   p {
-    padding: 4rem;
-    font-size: 1.8rem;
     color: $baseColor;
+    font-size: 1.8rem;
     line-height: 2.4rem;
-    //margin-left: -4rem;
     max-width: 80%;
+    //margin-left: -4rem;
+    padding: 4rem;
     @media screen and (max-width: 768px) {
       max-width: 100%;
       padding: 0;
@@ -182,38 +189,38 @@
 }
 
 .project--link {
-  position: relative;
-  padding: 5rem 0 0 4rem;
   clear: both;
+  padding: 5rem 0 0 4rem;
+  position: relative;
   @media screen and (max-width: 768px) {
     padding: 2rem 0 0 0;
   }
 }
 
 .button {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
   background: linear-gradient(45deg, $gradient2 0%, $gradient1 100%);
+  border: 0;
   color: $white;
-  width: 9.5rem;
-  text-align: left;
+  display: inline-block;
   height: 5rem;
   line-height: 5rem;
+  overflow: hidden;
   padding: 0 3.5rem 0 2rem;
-  border: none;
+  position: relative;
+  text-align: left;
+  width: 9.5rem;
 
   &:before {
+    background: $white;
+    bottom: 0;
     content: "";
     display: block;
+    height: 0.2rem;
+    margin: auto;
     position: absolute;
     right: 0;
     top: 0;
-    bottom: 0;
-    margin: auto;
     width: 2.5rem;
-    height: 0.2rem;
-    background: $white;
     //animation: slideThrough .2s cubic-bezier(0.18, 0.89, 0.32, 1.28) running;
   }
 
@@ -225,45 +232,47 @@
 }
 
 .project--link__border {
-  z-index: -1;
-  display: block;
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
   background: transparent;
-  width: 14.6rem;
-  height: 4.6rem;
   border: 0.2rem solid #222;
   border-image: linear-gradient(to right, $gradient2 0%, $gradient1 100%);
   border-image-slice: 1;
   display: none;
+  display: block;
+  height: 4.6rem;
+  left: 0.5rem;
+  position: absolute;
+  top: 0.5rem;
+  width: 14.6rem;
+  z-index: -1;
 }
 
 .project--rtl {
-  text-align: right;
   flex-direction: row-reverse;
+  text-align: right;
   .project--content {
     h2 {
-      margin-right: -8rem;
       margin-left: 0;
+      margin-right: -8rem;
       @media screen and (max-width: 768px) {
         margin: -4rem -2rem 0 0;
       }
     }
 
     p {
-      float: right;
       clear: both;
+      float: right;
     }
   }
+
   .project--link {
     padding: 5rem 4rem 0 0;
     @media screen and (max-width: 768px) {
       padding: 2rem 0 0 0;
     }
   }
+
   .project--link__border {
-    right: -0.5rem;
     left: auto;
+    right: -0.5rem;
   }
 }

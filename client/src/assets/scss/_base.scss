@@ -3,25 +3,25 @@ html {
 }
 
 body {
-  color: $baseColor;
-  font-size: 1.6rem;
-  font-family: $base;
   background: $brokenWhite;
+  color: $baseColor;
+  font-family: $base;
+  font-size: 1.6rem;
   overflow-x: hidden;
 }
 
 a {
-  color: $linkColor;
   border-bottom: 1px solid $linkColor;
+  color: $linkColor;
   text-decoration: none;
   transition: color 0.25s ease-out;
 }
 
 h1,
 h3 {
+  color: $headColor;
   font-family: $head;
   font-size: 4.8rem;
-  color: $headColor;
 }
 
 h3 {
@@ -30,9 +30,9 @@ h3 {
 }
 
 .content-wrapper {
+  margin: 0 auto;
   max-width: 144rem;
   padding: 0 4rem;
-  margin: 0 auto;
 }
 
 small {

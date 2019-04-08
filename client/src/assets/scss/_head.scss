@@ -1,22 +1,22 @@
 .head{
-    padding: 5rem 0;
-    height: calc(100vh - 10rem);
-    position: relative;
     background: $brokenWhite;
     background: linear-gradient(to bottom, $white 0%,$brokenWhite 100%);
+    height: calc(100vh - 10rem);
+    padding: 5rem 0;
+    position: relative;
 
     &:before{
-        content: '';
-        width: 73rem;
-        height: 46.5rem;
-        display: block;
         background: $gradient1;
         background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
-        transform: rotate(-45deg);
         border-radius: 3rem; 
+        content: '';
+        display: block;
+        height: 46.5rem;
         position: absolute;
-        top: 0;
         right: 80%;
+        top: 0;
+        transform: rotate(-45deg);
+        width: 73rem;
         z-index: 0; 
 
         @media screen and (max-width: 480px) {
@@ -25,16 +25,16 @@
     }
 
     &:after{
+        background: linear-gradient(45deg, $gradient4 0%,$gradient3 100%);
+        background: $gradient3;
+        border-radius: 50%;
+        bottom: 5rem;
         content: '';
         display: block;
-        width: 20rem; 
         height: 20rem; 
-        border-radius: 50%;
         position: absolute;
-        bottom: 5rem;
         right: 4rem;
-        background: $gradient3;
-        background: linear-gradient(45deg, $gradient4 0%,$gradient3 100%);
+        width: 20rem; 
         z-index: 0;
 
         @media screen and (max-width: 640px) {
@@ -46,8 +46,8 @@
 .navigation {
     float: right;
     position: fixed;
-    top: 5rem;
     right: 0;
+    top: 5rem;
     width: 100%;
     z-index: 10;
     @media screen and (max-width: 640px) {
@@ -56,9 +56,9 @@
 }
 
 .navigation--links{
+    margin: 0 auto;
     max-width: 144rem;
     padding: 0 4rem;
-    margin: 0 auto;
     text-align: right;
 }
 
@@ -70,27 +70,27 @@
     }
 
     a{
+        border-bottom: 0;
         color: $linkColor;
-        border-bottom: none;
-        position: relative;
         display: block;
         height: 2rem;
         overflow-x: hidden;
+        position: relative;
 
         &:after{
-            content: '';
-            width: 100%;
-            right: 100%;
-            height: .2rem;
-            display: block;
-            position: absolute;
-            margin-top: 0.2rem;
+            background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
+            background: -webkit-linear-gradient(left, $gradient2 0%,$gradient1 100%);
             background: $gradient1;
             background: -moz-linear-gradient(left, $gradient2 0%, $gradient1 100%);
-            background: -webkit-linear-gradient(left, $gradient2 0%,$gradient1 100%);
-            background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
+            content: '';
+            display: block;
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$gradient2', endColorstr='$gradient1',GradientType=0 ); 
+            height: .2rem;
+            margin-top: 0.2rem;
+            position: absolute;
+            right: 100%;
             transition: all .25s ease-out;
+            width: 100%;
         }
 
         &.no-transition {
@@ -100,9 +100,10 @@
         }
 
         &.active, &:hover {
-            background: -webkit-linear-gradient(left, $gradient2, $gradient1);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            background: -webkit-linear-gradient(left, $gradient2, $gradient1);
             &:after {
                 right: 0 !important;
             }
@@ -129,14 +130,14 @@
 }
 
 .head--content{
-    position: absolute;
-    top: 30%;
     left: 0;
-    right: 0;
     margin: auto;
     max-width: 76rem;
     padding: 0 2rem;
+    position: absolute;
+    right: 0;
     text-align: center;
+    top: 30%;
     transition: all .25s ease-out;
     z-index: 1;
     @media screen and (max-width: 640px) {
@@ -145,27 +146,27 @@
 }
 
 .head--title{
-    display: inline-block;
-    width: 13.4rem;
-    position: relative;
-    color: transparent;
-    background: linear-gradient(to left, transparent 50%, $linkColor 50%);
-    background-size: 200% 100%;
-    background-position: 100% bottom; 
     animation: blackToText .5s .3s forwards ease-out running;
+    background: linear-gradient(to left, transparent 50%, $linkColor 50%);
+    background-position: 100% bottom; 
+    background-size: 200% 100%;
+    color: transparent;
+    display: inline-block;
+    position: relative;
+    width: 13.4rem;
 }
 
 .divider{
-    width: 5rem;
-    height: .2rem;
-    background-color: #DADADA;
-    margin: 5rem auto;
+    background-color: #dadada;
     display: block;
+    height: .2rem;
+    margin: 5rem auto;
+    width: 5rem;
 
     &.vertical {
-        width: 0.2rem;
         height: 5rem;
         margin: 0 3rem;
+        width: 0.2rem;
     }
 }
 
@@ -180,41 +181,45 @@
 
 .info--link{
     background: linear-gradient(to left, transparent 50%, $linkColor 50%);
-    background-size: 200% 100%;
     background-position: right bottom;
+    background-size: 200% 100%;
     display: inline-block;
-    width: 10rem;
     transition: all .15s ease-out;
+    width: 10rem;
     &:hover{
         //background-position: left bottom;
+        border: 0;
         color: #fff;
-        border: none;
     }
+
     &.no-transition {
         transition: none;
     }
+
     &.left{
         background-position: right bottom;
     }
+
     &.right{
         background-position: -100% bottom;
     }
+
     &.center{
         background-position: left bottom;
     } 
 }
 
 .scroll-indicator{
-    display: block;
-    width: .2rem;
-    height: 5rem;
-    margin-top: 0;
-    background: $baseColor;
-    position: absolute;
-    top: calc(100% - 5rem);
-    left: 0;
-    right: 0;
-    margin: 0 auto;
     animation: scrolldown 2s 3s infinite;
+    background: $baseColor;
+    display: block;
+    height: 5rem;
+    left: 0;
+    margin: 0 auto;
+    margin-top: 0;
+    position: absolute;
+    right: 0;
+    top: calc(100% - 5rem);
     transition: all .25s ease-out;
+    width: .2rem;
 }

@@ -9,52 +9,50 @@ import config from './config/config';
 
 // Apollo client setup
 const client = new ApolloClient({
-    uri: config.ADMIN_URL + '/graphql'
-})
+  uri: `${config.ADMIN_URL}/graphql`,
+});
 
-class App extends Component {   
-    
-    componentDidMount() {
-        const linksToAnchors = document.querySelectorAll('a[href^="#"]');
-        linksToAnchors.forEach(each => (each.onclick = this.anchorLinkHandler));
-    }
+class App extends Component {
+  componentDidMount() {
+    const linksToAnchors = document.querySelectorAll('a[href^="#"]');
+    linksToAnchors.forEach(each => (each.onclick = this.anchorLinkHandler));
+  }
 
-    anchorLinkHandler(e) {
-        e.preventDefault();
-        const targetID = this.href.slice(this.href.indexOf("#"));
-        const element = document.querySelector(targetID);
-        const originalTop = element.getBoundingClientRect().top;
-        const originalLeft = element.getBoundingClientRect().left;
-    
-        window.scrollBy({
-            top: originalTop,
-            left: originalLeft,
-            behavior: "smooth"
-        });
-    
-        const checkIfDone = setInterval(function() {
-            const currentTop = element.getBoundingClientRect().top,
-                  currentLeft = element.getBoundingClientRect().left;
-            if (Math.floor(currentTop) === 0 && Math.floor(currentLeft) === 0) {
-                element.tabIndex = "-1";
-                element.focus();
-                clearInterval(checkIfDone);
-            }
-        }, 100);
-    }
+  anchorLinkHandler(e) {
+    e.preventDefault();
+    const targetID = this.href.slice(this.href.indexOf('#'));
+    const element = document.querySelector(targetID);
+    const originalTop = element.getBoundingClientRect().top;
+    const originalLeft = element.getBoundingClientRect().left;
 
-    render() {
-        return (
-            <div>
-                <Header />
-                <ApolloProvider client={client}>
-                    <Projects />
-                </ApolloProvider>
-                <Contact />
-                
-            </div>
-        );
-    }
+    window.scrollBy({
+      top: originalTop,
+      left: originalLeft,
+      behavior: 'smooth',
+    });
+
+    const checkIfDone = setInterval(function() {
+      const currentTop = element.getBoundingClientRect().top;
+      const currentLeft = element.getBoundingClientRect().left;
+      if (Math.floor(currentTop) === 0 && Math.floor(currentLeft) === 0) {
+        element.tabIndex = '-1';
+        element.focus();
+        clearInterval(checkIfDone);
+      }
+    }, 100);
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <ApolloProvider client={client}>
+          <Projects />
+        </ApolloProvider>
+        <Contact />
+      </div>
+    );
+  }
 }
 
 export default App;

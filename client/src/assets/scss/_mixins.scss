@@ -4,29 +4,29 @@
  */
 
  @mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
-    $burger-height: $height !global;
     $burger-gutter: $gutter !global;
+    $burger-height: $height !global;
 
-    position: relative;
-    margin-top: $height + $gutter;
     margin-bottom: $height + $gutter;
+    margin-top: $height + $gutter;
+    position: relative;
 
     &, &:before, &:after {
-        width: $width;
-        height: $height;
         background-color: $color;
+        height: $height;
+        transition-duration: $transition-duration;
         @if $border-radius != 0 {
             border-radius: $border-radius;
         }
         
         transition-property: background-color, transform;
-        transition-duration: $transition-duration;
+        width: $width;
     }
 
     &:before, &:after {
-        position: absolute;
         content: "";
         display: block;
+        position: absolute;
     }
 
     &:before {
@@ -76,18 +76,20 @@
     & {
         background-color: transparent;
     }
+
     &:before {
-        -webkit-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
         -moz-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
         -ms-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
         -o-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        -webkit-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
         transform: translateY($burger-gutter + $burger-height) rotate(45deg);
     }
+
     &:after {
-        -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
         -moz-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
         -ms-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
         -o-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
         transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
     }
 }
