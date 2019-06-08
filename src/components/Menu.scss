@@ -1,0 +1,163 @@
+@import '../global/scss/variables';
+@import '../global/scss/mixins';
+
+.mobile--navigation {
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    margin: auto;
+    overflow: hidden; 
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 12;
+    
+    &.hidden {
+        display: none;
+    }
+    
+    .overlay {
+        background: #222;
+        height: 100vh;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: -100%;
+        width: 100%;
+        z-index: 13;
+    }
+    
+    .mobile--navigation__links {
+        bottom: 0;
+        height: 100vh;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        transition: background .01s .25s linear, opacity .01s .25s linear;
+        opacity: 0;
+        
+        &.open {
+            opacity: 1;
+            background: $white;
+            + .overlay {
+                animation: x .5s ease-out forwards running;
+            }
+        }
+        
+        &.animate-out {
+            + .overlay {
+                animation: y .5s ease-out forwards running;
+            }
+        }
+    }
+    
+    ul {
+        bottom: 0;
+        display: inline-block;
+        height: 28rem;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        
+        li {
+            margin-bottom: 2rem;
+            overflow: hidden;
+            
+            &:first-child {
+                a {
+                    animation: down .5s .5s cubic-bezier(0,1,.5,1) forwards running;
+                }
+            }
+            
+            &:nth-child(2) {
+                a {
+                    animation: down .5s .75s cubic-bezier(0,1,.5,1) forwards running;
+                }
+            }
+            
+            &:last-child {
+                a {
+                    animation: down .5s 1s cubic-bezier(0,1,.5,1) forwards running;
+                }
+            }
+        }
+    }
+    
+    a{
+        border-bottom: 0;
+        color: $link-color;
+        display: inline-block;
+        font-family: $head;
+        font-size: 7rem;
+        height: 8rem;
+        overflow-x: hidden;
+        position: relative;
+        top: -8rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1rem;
+            background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
+            transform-origin: bottom right;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        &.no-transition {
+            &:after{
+                transition: none;
+            }
+        }
+        
+        &:hover {
+            background: -webkit-linear-gradient(left,#8132a0,#e08677);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            &::before {
+                transform-origin: bottom left;
+                transform: scaleX(1);
+            }
+        }
+    }
+} 
+
+#burger {
+    @include burger(4rem, .3rem, .7rem, $head-color);
+    //display: none;
+    text-decoration: none;
+}
+
+#menu-link {
+    border: 0;
+    display: none;
+    outline: none;
+    position: fixed;
+    right: 3rem;
+    top: 3rem;
+    z-index: 15;
+    background: transparent;
+    cursor: pointer;
+    
+    &.active {
+        #burger {
+            @include burger-to-cross;
+        }
+    }
+    
+    @media screen and (max-width: 640px) {
+        display: block;
+    }
+}

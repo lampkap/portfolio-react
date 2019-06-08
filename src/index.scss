@@ -1,0 +1,49 @@
+@import './global/scss/reset';
+@import './global/scss/variables';
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: $broken-white;
+  color: $base-color;
+  font-family: $base;
+  font-size: 1.6rem;
+  overflow-x: hidden;
+}
+
+a {
+  border-bottom: 1px solid $link-color;
+  color: $link-color;
+  text-decoration: none;
+  transition: color .25s ease-out;
+}
+
+h1,
+h3 {
+  color: $head-color;
+  font-family: $head;
+  font-size: 4.8rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+
+.content-wrapper {
+  margin: 0 auto;
+  max-width: 144rem;
+  padding: 0 4rem;
+}
+
+small {
+  font-size: 1.2rem;
+}

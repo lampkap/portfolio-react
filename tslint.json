@@ -1,0 +1,21 @@
+{
+	"extends": [
+		"tslint:recommended",
+		"tslint-react",
+		"tslint-config-prettier",
+		"tslint-eslint-rules"
+	],
+	"jsRules": {},
+	"rules": {
+		"semicolon": [true, "always"],
+		"object-curly-spacing": true,
+		"array-bracket-spacing": [
+			true,
+			"never"
+		],
+		"no-console": false,
+    "object-literal-sort-keys": false,
+    "jsx-no-lambda": false
+	},
+	"rulesDirectory": []
+}
