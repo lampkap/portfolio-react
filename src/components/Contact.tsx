@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { FormEvent, useContext, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import arrow from '../assets/img/right-arrow.svg';
 import { MenuContext } from '../contexts/MenuContext';
@@ -7,9 +7,22 @@ import { ViewportContext } from '../contexts/ViewportContext';
 import { API_URL } from '../data';
 import './Contact.scss';
 
+interface IInputState {
+  name: string;
+  email: string;
+  message: string;
+  date: string;
+}
+
+interface IErrorState {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
 const Contact = () => {
-  const [inputs, setInputs] = useState({ name: '', email: '', message: '', date: '' });
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+  const [inputs, setInputs] = useState<IInputState>({ name: '', email: '', message: '', date: '' });
+  const [errors, setErrors] = useState<IErrorState>({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [ref, inView] = useInView({ threshold: 0 });
@@ -21,7 +34,7 @@ const Contact = () => {
   if  (inView && !inViewport.includes(menuItem)) {
     inViewport.push(menuItem);
     updateViewport(inViewport);
-  } else if  (!inView && inViewport.includes(menuItem)) {
+  } else if (!inView && inViewport.includes(menuItem)) {
     updateViewport(inViewport.filter((itemInViewport) => itemInViewport !== menuItem));
   }
   
@@ -39,11 +52,10 @@ const Contact = () => {
   };
 
   const handleInput = (e:any) => {
+    handleErrors();
     setLabelPosition(e);
     const { name, value } = e.currentTarget;
-    setInputs((prevInputs) => {
-      return { ...prevInputs, [name]: value };
-    });
+    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
   };
 
   const validEmail = (email:string) => {
@@ -52,7 +64,7 @@ const Contact = () => {
   };
 
   const handleErrors = () => {
-    setErrors({ name: '', email: '', message: '' });
+    setErrors({});
     const { name, email, message } = inputs;
     // Handle name errors.
     if (name.trim() === '') {
@@ -60,9 +72,9 @@ const Contact = () => {
     }
     // Handle mail errors.
     if (email.trim() === '') {
-      setErrors((prevErrors) => ({ ...prevErrors, email: 'Your e-mail address can not be empty' }));
+      setErrors((prevErrors) => ({ ...prevErrors, email: 'Your email can not be empty' }));
     } else if (!validEmail(email)) {
-      setErrors((prevErrors) => ({ ...prevErrors, email: 'Your e-mail address is not valid' }));
+      setErrors((prevErrors) => ({ ...prevErrors, email: 'Your email is not valid' }));
     }
     // Handle message errors.
     if (message.trim() === '') {
@@ -72,28 +84,22 @@ const Contact = () => {
 
   const sendRequest = async () => {
     const { name, email, message, date } = inputs;
+    setLoading(true);
     const response = await axios.post(`${API_URL}/contact`, { name, email, message, date });
+    setLoading(false);
     return response;
   };
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e:FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    handleErrors();
-
-    const { name, email, message } = errors;
-    if (name !== '' || email !== '' || message !== '') {
-      setLoading(false);
-      return;
-    }
-
+    
+    // Send request to back-end and send mail.
     const response = await sendRequest();
-
+    
     if (response.data.success === 1) {
       setSuccess(true);
-      setLoading(false);
     } else {
-      setLoading(false);
+      setErrors(response.data);
     }
   };
 
@@ -117,7 +123,7 @@ const Contact = () => {
             onSubmit={handleSubmit}
           >
             <div className="input--wrapper name">
-              {errors.name !== '' && (
+              {errors.name && errors.name !== '' && (
                 <p className="error--message">
                   {errors.name}
                 </p>
@@ -128,7 +134,7 @@ const Contact = () => {
                 </span>
                 <input
                   onInput={handleInput}
-                  className={`input--line ${errors.name !== '' ? 'error' : ''}`}
+                  className={`input--line ${errors.name && errors.name !== '' ? 'error' : ''}`}
                   name="name"
                   id="name"
                   type="text"
@@ -136,7 +142,7 @@ const Contact = () => {
               </label>
             </div>
             <div className="input--wrapper email">
-              {errors.email !== '' && (
+              {errors.email && errors.email !== '' && (
                 <p className="error--message">
                   {errors.email}
                 </p>
@@ -147,7 +153,7 @@ const Contact = () => {
                 </span>
                 <input
                   onInput={handleInput}
-                  className={`input--line ${errors.email !== '' ? 'error' : ''}`}
+                  className={`input--line ${errors.email && errors.email !== '' ? 'error' : ''}`}
                   name="email"
                   id="email"
                   type="email"
@@ -155,7 +161,7 @@ const Contact = () => {
               </label>
             </div>
             <div className="input--wrapper message">
-              {errors.message !== '' && (
+              {errors.message && errors.message !== '' && (
                 <p className="error--message">
                   {errors.message}
                 </p>
@@ -167,7 +173,7 @@ const Contact = () => {
                 <textarea
                   onInput={handleInput}
                   name="message"
-                  className={`input--line ${errors.message !== '' ? 'error' : ''}`}
+                  className={`input--line ${errors.message && errors.message !== '' ? 'error' : ''}`}
                   id="message"
                   rows={7}
                 />
