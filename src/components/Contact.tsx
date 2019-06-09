@@ -184,7 +184,7 @@ const Contact = () => {
             </div>
             <div className="input--wrapper">
               <button type="submit" className="button">
-                Send
+                <span>Send</span>
                 <img src={arrow} className="svg--arrow" alt="Arrow right"/>
               </button>
               
