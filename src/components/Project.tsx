@@ -13,7 +13,7 @@ interface IProps {
 const Project: React.FC<IProps> = (props) => {
   const { direction, image, name, description, link } = props;
   const [ref, inView] = useInView({
-    threshold: .4,
+    threshold: .3,
     triggerOnce: true,
   });
 
