@@ -35,7 +35,7 @@ const Projects = () => {
         {projects ? (
           <div ref={ref}>
             {projects.map((project, i) => {
-              const direction = i % 2 === 0 ? 'rtl' : 'ltr';
+              const direction = i % 2 === 0 ? 'ltr' : 'rtl';
 
               return (
                 <Project

@@ -26,6 +26,10 @@
   }
   position: relative;
 
+  &:first-child {
+    margin-top: 10rem;
+  }
+
   &:last-child {
     margin-bottom: 10rem;
     @media screen and (max-width: 768px) {

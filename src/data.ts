@@ -2,6 +2,13 @@ export const API_URL = 'https://portfolio-admin.herokuapp.com';
 
 export const projects = [  
    {  
+      "id":"6",
+      "name":"Kambukka",
+      "description":"A Drupal 7 multisite webshop for the brand Kambukka. One of the sites is used to manage the products. These products are then synced across the webshops.",
+      "link":"https://www.kambukka.com",
+      "image":"kambukka.jpg"
+   },
+   {  
       "id":"5",
       "name":"Baj Beton",
       "description":"A multilingual Drupal 8 website for BAJ Beton with a custom quote calculation module. This tool calculates the price on the fly based on user input. The submissions are exported to an ERP system.",
@@ -29,11 +36,11 @@ export const projects = [
       "link":"https://www.servicerent.be",
       "image":"servicerent_rev.jpg"
    },
-   {  
-      "id":"1",
-      "name":"Trias",
-      "description":"A Drupal 7 multisite for the NGO Trias.",
-      "link":"https://www.trias.ngo",
-      "image":"trias.jpg"
-   }
+   // {  
+   //    "id":"1",
+   //    "name":"Trias",
+   //    "description":"A Drupal 7 multisite for the NGO Trias.",
+   //    "link":"https://www.trias.ngo",
+   //    "image":"trias.jpg"
+   // }
 ];
