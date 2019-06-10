@@ -144,7 +144,7 @@
   }
 
   &:before {
-    background: #222;
+    background: $link-color;
     content: "";
     display: block;
     height: 100%;
@@ -210,7 +210,7 @@
   position: relative;
   font-size: inherit;
   font-family: inherit;
-  background: -webkit-linear-gradient(left,#8132a0,#e08677);
+  background: -webkit-linear-gradient(left,$gradient2,$gradient1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: red;
