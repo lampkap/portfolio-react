@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { MenuContext } from '../contexts/MenuContext';
-import { ViewportContext } from '../contexts/ViewportContext';
 import './Header.scss';
 import Menu from './Menu';
 
 
 const Header = () => {
   const [ref, inView] = useInView({ threshold: 0 });
-  const { setActive } = useContext(MenuContext);
-  const { inViewport, updateViewport } = useContext(ViewportContext);
+  const { setActive, inViewport, updateViewport } = useContext(MenuContext);
   const menuItem = 'home';
 
   // Set active menu item if the region is in view port.

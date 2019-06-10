@@ -124,7 +124,7 @@
         }
         
         &:hover {
-            background: -webkit-linear-gradient(left,#8132a0,#e08677);
+            background: -webkit-linear-gradient(left,$gradient2,$gradient1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             &::before {

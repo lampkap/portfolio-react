@@ -3,7 +3,6 @@ import React, { FormEvent, useContext, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import arrow from '../assets/img/right-arrow.svg';
 import { MenuContext } from '../contexts/MenuContext';
-import { ViewportContext } from '../contexts/ViewportContext';
 import { API_URL } from '../data';
 import './Contact.scss';
 
@@ -26,8 +25,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [ref, inView] = useInView({ threshold: 0 });
-  const { setActive } = useContext(MenuContext);
-  const { inViewport, updateViewport } = useContext(ViewportContext);
+  const { setActive, inViewport, updateViewport } = useContext(MenuContext);
   const menuItem = 'contact';
 
   // Set active menu item if  the region is in view port.
