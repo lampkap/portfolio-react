@@ -26,7 +26,7 @@ const Projects = () => {
     <section className="projects" id="projects">
       <div className="content-wrapper">
         <div className="projects--head">
-          <h1>My work.</h1>
+          <h1>Recent projects.</h1>
           <div className="divider" />
         </div>
 
