@@ -77,7 +77,7 @@ const Menu = () => {
         </div>
         <div className="overlay"/>
       </div>
-      <button type="button" id="menu-link" onClick={handleMobileMenu}>
+      <button type="button" id="menu-link" onClick={handleMobileMenu} className={mobileMenu === 'open' ? 'active' : ''}>
         <div id="burger"/>
       </button>
     </div>
