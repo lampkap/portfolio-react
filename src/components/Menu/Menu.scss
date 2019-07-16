@@ -1,6 +1,6 @@
-@import '../global/scss/variables';
-@import '../global/scss/mixins';
-@import '../global/scss/fonts';
+@import '../../global/scss/variables';
+@import '../../global/scss/mixins';
+@import '../../global/scss/fonts';
 
 .mobile--navigation {
     bottom: 0;
@@ -36,16 +36,16 @@
         height: 100vh;
         left: 0;
         margin: auto;
+        opacity: 0;
         position: absolute;
         right: 0;
         top: 0;
-        width: 100%;
         transition: background .01s .25s linear, opacity .01s .25s linear;
-        opacity: 0;
+        width: 100%;
         
         &.open {
-            opacity: 1;
             background: $white;
+            opacity: 1;
             + .overlay {
                 animation: x .5s ease-out forwards running;
             }
@@ -105,15 +105,15 @@
         top: -8rem;
 
         &::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1rem;
             background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
-            transform-origin: bottom right;
+            bottom: 0;
+            content: '';
+            height: 1rem;
+            left: 0;
+            position: absolute;
+            right: 0;
             transform: scaleX(0);
+            transform-origin: bottom right;
             transition: transform 0.5s ease;
         }
         
@@ -124,12 +124,13 @@
         }
         
         &:hover {
-            background: -webkit-linear-gradient(left,$gradient2,$gradient1);
-            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background: -webkit-linear-gradient(left,$gradient2,$gradient1);
+            background-clip: text;
+            background-color: transparent;
             &::before {
-                transform-origin: bottom left;
                 transform: scaleX(1);
+                transform-origin: bottom left;
             }
         }
     }
@@ -142,15 +143,15 @@
 }
 
 #menu-link {
+    background: transparent;
     border: 0;
+    cursor: pointer;
     display: none;
     outline: none;
     position: fixed;
     right: 3rem;
     top: 3rem;
     z-index: 15;
-    background: transparent;
-    cursor: pointer;
     
     &.active {
         #burger {

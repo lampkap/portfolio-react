@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { MenuContext } from '../contexts/MenuContext';
+import { MenuContext } from '../../contexts/MenuContext';
+import Menu from '../Menu/Menu';
 import './Header.scss';
-import Menu from './Menu';
 
 
 const Header = () => {

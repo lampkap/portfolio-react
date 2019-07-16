@@ -1,6 +1,6 @@
-@import '../global/scss/variables';
-@import '../global/scss/animations';
-@import '../global/scss/fonts';
+@import '../../global/scss/variables';
+@import '../../global/scss/animations';
+@import '../../global/scss/fonts';
 
 .head{
   background: linear-gradient(to bottom, $white 0%, $broken-white 100%);
@@ -64,36 +64,36 @@
 }
 
 .navigation--link {
-  position: relative;
   display: inline-block;
   margin-right: 3rem;
+  position: relative;
   
   a {
     border-bottom: 0;
 
     &:hover, &.active {
-      background: -webkit-linear-gradient(left,$gradient2,$gradient1);
-      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background: -webkit-linear-gradient(left,$gradient2,$gradient1);
+      background-clip: text;
     }
 
     &::before {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      right: 0;
-      height: 2px;
       background: linear-gradient(to right, $gradient2 0%,$gradient1 100%);
-      transform-origin: bottom right;
+      bottom: -5px;
+      content: '';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      right: 0;
       transform: scaleX(0);
+      transform-origin: bottom right;
       transition: transform 0.5s ease;
     }
   
     &:hover, &.active {
       &::before {
-        transform-origin: bottom left;
         transform: scaleX(1);
+        transform-origin: bottom left;
       }
     }
   }
@@ -150,39 +150,39 @@
 }
 
 .info--link {
-  z-index: 1;
-  position: relative;
-  font-size: inherit;
-  font-family: inherit;
-  color: $link-color;
-  outline: none;
-  border: none;
   background-color: transparent;
+  border: 0;
+  color: $link-color;
   display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  position: relative;
+  z-index: 1;
 
   &::before {
-    content: '';
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background-color: $link-color;
-    transform-origin: center right;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
     transform: scaleX(0);
+    transform-origin: center right;
     transition: transform 0.15s ease-in-out;
+    z-index: -1;
   }
 
   &:hover {
-    cursor: pointer;
     color: $white;
+    cursor: pointer;
     transition: color .15s ease-in-out;
   }
 
   &:hover::before {
-    transform-origin: center left;
     transform: scaleX(1);
+    transform-origin: center left;
   }
 }
 

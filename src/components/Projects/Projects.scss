@@ -1,6 +1,6 @@
-@import '../global/scss/variables';
-@import '../global/scss/animations';
-@import '../global/scss/fonts';
+@import '../../global/scss/variables';
+@import '../../global/scss/animations';
+@import '../../global/scss/fonts';
 
 .projects {
   padding: 5rem 0;
@@ -158,16 +158,16 @@
 }
 
 .project--content {
-  flex: 0 1 auto;
+  display: flex;
   @media screen and (max-width: 768px) {
     width: 100%;
   }
-  padding-top: 10rem;
+  flex: 0 1 auto;
+  flex-direction: column;
   opacity: 0;
+  padding-top: 10rem;
   width: 45%;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
 
   h2 {
     color: $head-color;
@@ -206,49 +206,48 @@
 }
 
 .project--link__link {
-  z-index: 1;
-  position: relative;
-  font-size: inherit;
-  font-family: inherit;
-  background: -webkit-linear-gradient(left,$gradient2,$gradient1);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: red;
-  outline: none;
-  border: none;
+  background: -webkit-linear-gradient(left,$gradient2,$gradient1);
+  background-clip: text;
   background-color: transparent;
+  border: 0;
   display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  position: relative;
+  z-index: 1;
 
   &::before {
-    content: '';
-    z-index: -1;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    right: 0;
-    height: 10px;
     background: linear-gradient(to right, transparentize($gradient2, .9) 0%, transparentize($gradient1, .9) 100%);
+    bottom: -3px;
+    content: '';
+    height: 10px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: scaleX(0);
     //border-bottom: 1px solid $link-color;
     transform-origin: center right;
-    transform: scaleX(0);
     transition: transform 0.15s ease-in-out;
+    z-index: -1;
   }
 
   &:hover {
-    cursor: pointer;
     color: $white;
+    cursor: pointer;
     transition: color .15s ease-in-out;
   }
 
   &:hover::before {
-    transform-origin: center left;
     transform: scaleX(1);
+    transform-origin: center left;
   }
 }
 
 .svg--arrow {
-  max-width: 3rem;
   margin-left: 1rem;
+  max-width: 3rem;
 }
 
 .project--rtl {

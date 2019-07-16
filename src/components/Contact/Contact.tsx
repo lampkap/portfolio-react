@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { FormEvent, useContext, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import arrow from '../assets/img/right-arrow.svg';
-import { MenuContext } from '../contexts/MenuContext';
-import { API_URL } from '../data';
+import arrow from '../../assets/img/right-arrow.svg';
+import { MenuContext } from '../../contexts/MenuContext';
+import { API_URL } from '../../data';
 import './Contact.scss';
 
 interface IInputState {
@@ -18,6 +18,15 @@ interface IErrorState {
   email?: string;
   message?: string;
 }
+
+const setLabelPosition = (e:any) => {
+  const label = e.target.parentNode.querySelector('.input--label');
+  if  (e.target.value === '') {
+    label.classList.remove('sticky');
+  } else {
+    label.classList.add('sticky');
+  }
+};
 
 const Contact = () => {
   const [inputs, setInputs] = useState<IInputState>({ name: '', email: '', message: '', date: '' });
@@ -40,46 +49,13 @@ const Contact = () => {
     setActive(menuItem);
   }
 
-  const setLabelPosition = (e:any) => {
-    const label = e.target.parentNode.querySelector('.input--label');
-    if  (e.target.value === '') {
-      label.classList.remove('sticky');
-    } else {
-      label.classList.add('sticky');
-    }
-  };
-
   const handleInput = (e:any) => {
-    handleErrors();
     setLabelPosition(e);
     const { name, value } = e.currentTarget;
     setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
   };
-
-  const validEmail = (email:string) => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const handleErrors = () => {
-    setErrors({});
-    const { name, email, message } = inputs;
-    // Handle name errors.
-    if (name.trim() === '') {
-      setErrors((prevErrors) => ({ ...prevErrors, name: 'Your name can not be empty' }));
-    }
-    // Handle mail errors.
-    if (email.trim() === '') {
-      setErrors((prevErrors) => ({ ...prevErrors, email: 'Your email can not be empty' }));
-    } else if (!validEmail(email)) {
-      setErrors((prevErrors) => ({ ...prevErrors, email: 'Your email is not valid' }));
-    }
-    // Handle message errors.
-    if (message.trim() === '') {
-      setErrors((prevErrors) => ({ ...prevErrors, message: 'Your message can not be empty' }));
-    }
-  };
-
+  
+  // Send request to the server with the entered data.
   const sendRequest = async () => {
     const { name, email, message, date } = inputs;
     setLoading(true);

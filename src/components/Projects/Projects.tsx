@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { MenuContext } from '../contexts/MenuContext';
-import { projects } from '../data';
-import Project from './Project';
+import { MenuContext } from '../../contexts/MenuContext';
+import { projects } from '../../data';
+import Project from '../Project/Project';
 import './Projects.scss';
 
 const Projects = () => {

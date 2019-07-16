@@ -1,5 +1,5 @@
-@import '../global/scss/variables';
-@import '../global/scss/fonts';
+@import '../../global/scss/variables';
+@import '../../global/scss/fonts';
 
 .contact {
   min-height: calc(100vh - 15rem);
@@ -34,8 +34,8 @@ form {
   transition: all .25s ease-out;
 
   &.hidden {
-      opacity: 0;
       height: 0;
+      opacity: 0;
   }
 
   &.removed {
@@ -43,15 +43,15 @@ form {
   }
 
   &:after {
+    background: transparentize($broken-white, .3);
     content: '';
+    display: none;
+    height: 100%;
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background: transparentize($broken-white, .3);
     z-index: 10;
-    display: none;
   }
 
   &.loading:after {
@@ -59,21 +59,21 @@ form {
   }
 
   &.loading:before {
+    animation: spin 1s linear infinite;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    border-top-color: $link-color;
+    bottom: 0;
     content: '';
     display: block;
-    border: 3px solid rgba(0, 0, 0, 0.2);
-    border-top-color: $link-color;
-    border-radius: 50%;
-    width: 3rem;
     height: 3rem;
-    position: absolute;
-    top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3rem;
     z-index: 11;
-    animation: spin 1s linear infinite;
   }
 }
 
@@ -202,50 +202,50 @@ input#date {
 }
 
 .button span {
-  font-size: inherit;
-  font-family: inherit;
-  background: -webkit-linear-gradient(left,$gradient2,$gradient1);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(left,$gradient2,$gradient1);
+  background-clip: text;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .button {
-  z-index: 1;
-  padding: 0;
-  position: relative;
+  background-color: transparent;
+  border: 0;
   display: inline-block;
   outline: none;
-  border: none;
-  background-color: transparent;
+  padding: 0;
+  position: relative;
+  z-index: 1;
 
   &::before {
-    content: '';
-    z-index: -1;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
     background: linear-gradient(to right, transparentize($gradient2, .8) 0%, transparentize($gradient1, .8) 100%);
+    bottom: 0;
+    content: '';
+    height: 10px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: scaleX(0);
     //border-bottom: 1px solid $link-color;
     transform-origin: center right;
-    transform: scaleX(0);
     transition: transform 0.15s ease-in-out;
+    z-index: -1;
   }
 
   &:hover {
-    cursor: pointer;
     color: $white;
+    cursor: pointer;
     transition: color .15s ease-in-out;
   }
 
   &:hover::before {
-    transform-origin: center left;
     transform: scaleX(1);
+    transform-origin: center left;
   }
 }
 
 .svg--arrow {
-  max-width: 3rem;
   margin-left: 1rem;
+  max-width: 3rem;
 }

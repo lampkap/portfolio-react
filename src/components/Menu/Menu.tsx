@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { MenuContext } from '../contexts/MenuContext';
+import { MenuContext } from '../../contexts/MenuContext';
 import './Menu.scss';
 
 const Menu = () => {
@@ -18,7 +18,7 @@ const Menu = () => {
 
   // Handle burger icon click
   const handleMobileMenu = () => {
-    setMobileMenu((prevState:any) => {
+    setMobileMenu((prevState:string) => {
       if(prevState === 'open') {
         return 'animate-out';
       } else {

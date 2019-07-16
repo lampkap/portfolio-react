@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import arrow from '../assets/img/right-arrow.svg';
+import arrow from '../../assets/img/right-arrow.svg';
 
 interface IProps {
   direction: string;
@@ -21,7 +21,7 @@ const Project: React.FC<IProps> = (props) => {
     <article ref={ref} className={`project project--${direction} ${inView ? 'animated' : ''}`}>
       <div className="project--img__wrapper">
         <figure className="project--image">
-          <img src={require(`../assets/img/${image}`)} alt={name} />
+          <img src={require(`../../assets/img/${image}`)} alt={name} />
         </figure>
       </div>
       <div className="project--content">
