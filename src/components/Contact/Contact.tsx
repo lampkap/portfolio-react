@@ -157,9 +157,9 @@ const Contact = () => {
               <input type="text" name="date" id="date" onInput={handleInput} />
             </div>
             <div className="input--wrapper">
-              <button type="submit" className="button">
-                <span>Send</span>
-                <img src={arrow} className="svg--arrow" alt="Arrow right"/>
+              <button type="submit" className="link">
+                <span className="link--text">Send</span>
+                <div className="link--arrow"/>
               </button>
               
             </div>

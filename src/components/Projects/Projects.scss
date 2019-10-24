@@ -205,49 +205,97 @@
   }
 }
 
-.project--link__link {
-  -webkit-text-fill-color: transparent;
-  background: -webkit-linear-gradient(left,$gradient2,$gradient1);
-  background-clip: text;
-  background-color: transparent;
+.link {
+  background: transparent;
   border: 0;
+  cursor: pointer;
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
   outline: none;
   position: relative;
+  transition: all .25s ease-out;
   z-index: 1;
 
   &::before {
-    background: linear-gradient(to right, transparentize($gradient2, .9) 0%, transparentize($gradient1, .9) 100%);
-    bottom: -3px;
+    background: linear-gradient(to right, $gradient2 0%, $gradient1 100%);
+    bottom: 0;
+    bottom: 0;
     content: '';
-    height: 10px;
+    display: inline-block;
+    height: .2rem;
     left: 0;
+    margin: auto;
+    opacity: 0;
     position: absolute;
-    right: 0;
+    top: 1px;
     transform: scaleX(0);
-    //border-bottom: 1px solid $link-color;
-    transform-origin: center right;
-    transition: transform 0.15s ease-in-out;
-    z-index: -1;
+    transform-origin: 0 0;
+    transition: transform 1s cubic-bezier(.835, -.005, .06, 1), opacity 1s cubic-bezier(.835, -.005, .06, 1);
+    vertical-align: middle;
+    width: 3rem;
   }
 
   &:hover {
-    color: $white;
-    cursor: pointer;
-    transition: color .15s ease-in-out;
-  }
+    .link--arrow {
+      &::before {
+        transform: scaleX(0);
+      }
+    }
 
-  &:hover::before {
-    transform: scaleX(1);
-    transform-origin: center left;
+    .link--text {
+      transform: translateX(5rem);
+    }
+
+    &::before {
+      opacity: 1;
+      transform: scaleX(1);
+    }
   }
 }
 
-.svg--arrow {
-  margin-left: 1rem;
-  max-width: 3rem;
+.link--text {
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(left, $gradient2, $gradient1);
+  background-clip: text;
+  background-color: transparent;
+  display: inline-block;
+  margin-right: 3rem;
+  transition: transform 1s cubic-bezier(.835, -.005, .06, 1);
+}
+
+.link--arrow {
+  display: inline-block;
+
+  &::before {
+    background: linear-gradient(to right, $gradient2 0%, $gradient1 100%);
+    bottom: 0;
+    content: '';
+    display: inline-block;
+    height: .2rem;
+    position: relative;
+    top: -1px;
+    transform: scaleX(1);
+    transform-origin: 100% 0;
+    transition: transform 1s cubic-bezier(.835, -.005, .06, 1);
+    vertical-align: middle;
+    width: 3rem;
+  }
+
+  &::after {
+    background: transparent;
+    border-bottom: .5rem solid transparent;
+    border-left: .5rem solid $gradient1;
+    border-top: .5rem solid transparent;
+    bottom: 0;
+    content: '';
+    display: inline-block;
+    height: 0;
+    margin: auto;
+    position: absolute;
+    top: .1rem;
+    width: 0;
+  }
 }
 
 .project--rtl {

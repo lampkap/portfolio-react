@@ -29,13 +29,13 @@ const Project: React.FC<IProps> = (props) => {
         <p>{description}</p>
         <div className="project--link">
           <a
-            className="project--link__link"
+            className="link"
             href={link}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Visit website
-            <img className="svg--arrow" src={arrow} alt="Arrow right" />
+            <span className="link--text">Visit website</span>
+            <div className="link--arrow"/>
           </a>
         </div>
       </div>
