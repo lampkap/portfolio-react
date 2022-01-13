@@ -7,7 +7,7 @@ interface IProps {
   image: string;
   name: string;
   description: string;
-  link: string;
+  link?: string;
 }
 
 const Project: React.FC<IProps> = (props) => {
@@ -27,17 +27,19 @@ const Project: React.FC<IProps> = (props) => {
       <div className="project--content">
         <h2>{name}</h2>
         <p>{description}</p>
-        <div className="project--link">
-          <a
-            className="link"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="link--text">Visit website</span>
-            <div className="link--arrow"/>
-          </a>
-        </div>
+        {link && (
+          <div className="project--link">
+            <a
+              className="link"
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="link--text">Visit website</span>
+              <div className="link--arrow"/>
+            </a>
+          </div>
+        )}
       </div>
     </article>
   );

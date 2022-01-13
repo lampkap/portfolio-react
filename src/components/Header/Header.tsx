@@ -17,7 +17,7 @@ const Header = () => {
   } else if (!inView && inViewport.includes(menuItem)) {
     updateViewport(inViewport.filter((itemInViewport) => itemInViewport !== menuItem));
   }
-  
+
   if(inViewport.includes(menuItem) && inViewport.length === 1) {
     setActive(menuItem);
   }
